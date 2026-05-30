@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-font="sans" data-lang="en" class="scroll-smooth h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranveer | Explorer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neonBlue: '#00f0ff',
+                        neonOrange: '#ff5e00',
+                        mountainDark: '#0b111e',
+                        glassBg: 'rgba(15, 23, 42, 0.45)',
+                        glassBorder: 'rgba(0, 240, 255, 0.2)'
+                    },
+                    boxShadow: {
+                        neonGlow: '0 0 15px rgba(0, 240, 255, 0.4)',
+                        neonGlowStrong: '0 0 25px rgba(0, 240, 255, 0.7)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Mouse Pointer Mask Layer (Hidden on touch screens) */
+        @media (pointer: fine) {
+            html, body, a, button, input, select {
+                cursor: none !important;
+            }
+            #mountainCursor {
+                display: block;
+            }
+        }
+        
+        /* Custom Dynamic Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b111e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00f0ff;
+            border-radius: 4px;
+        }
+
+        /* Multi-language and Customizable Typography Variable Overrides */
+        html[data-font="sans"] { font-family: ui-sans-serif, system-ui, sans-serif; }
+        html[data-font="serif"] { font-family: Georgia, Cambria, serif; }
+        html[data-font="mono"] { font-family: ui-monospace, SFMono-Regular, monospace; }
+
+        [data-translation] { display: none; }
+        html[data-lang="en"] [data-translation="en"] { display: inline; }
+        html[data-lang="hi"] [data-translation="hi"] { display: inline; }
+    </style>
+</head>
+<body class="bg-mountainDark text-slate-100 min-h-screen relative overflow-x-hidden">
+
+    <div id="mountainCursor" class="fixed w-8 h-8 pointer-events-none z-50 hidden transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-[0%]">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_0_5px_#00f0ff]">
+            <polygon points="16,2 30,28 2,28" fill="rgba(11, 17, 30, 0.8)" stroke="#00f0ff" stroke-width="2" stroke-linejoin="round"/>
+            <polygon points="16,2 22,14 17,12 14,15 11,11" fill="none" stroke="#ff5e00" stroke-width="1.5"/>
+        </svg>
+    </div>
+
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-mountainDark/40 to-mountainDark z-10"></div>
+        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30 scale-105 filter blur-[1px]">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-starry-night-sky-over-a-mountain-range-43093-large.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header class="fixed top-0 left-0 w-full z-40 px-6 h-20 flex items-center justify-between pointer-events-none">
+        <div class="relative pointer-events-auto" id="backpackContainer">
+            <button id="backpackBtn" class="w-14 h-14 bg-glassBg backdrop-blur-xl border-2 border-neonBlue rounded-xl flex items-center justify-center shadow-neonGlow hover:shadow-neonGlowStrong transition-all duration-300 transform active:scale-95">
+                <svg id="backpackIcon" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 transition-transform duration-500">
+                    <path d="M4 20V10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>
+                    <path d="M9 6V4a3 3 0 0 1 6 0v2" id="backpackTop"/>
+                    <path d="M8 12h8v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4z" fill="rgba(0,240,255,0.1)"/>
+                </svg>
+            </button>
+
+            <div id="arcMenu" class="absolute top-0 left-0 pointer-events-none w-[350px] h-[350px]">
+                <a href="#resume" class="menu-item absolute opacity-0 scale-75 bg-glassBg backdrop-blur-xl border border-neonBlue text-xs font-mono font-bold tracking-wider px-3 py-2 rounded-lg text-neonBlue shadow-neonGlow hover:bg-neonBlue hover:text-black transition-all duration-300">RESUME</a>
+                <a href="#background" class="menu-item absolute opacity-0 scale-75 bg-glassBg backdrop-blur-xl border border-neonBlue text-xs font-mono font-bold tracking-wider px-3 py-2 rounded-lg text-neonBlue shadow-neonGlow hover:bg-neonBlue hover:text-black transition-all duration-300">BACKGROUND</a>
+                <a href="#projects" class="menu-item absolute opacity-0 scale-75 bg-glassBg backdrop-blur-xl border border-neonBlue text-xs font-mono font-bold tracking-wider px-3 py-2 rounded-lg text-neonBlue shadow-neonGlow hover:bg-neonBlue hover:text-black transition-all duration-300">PROJECTS</a>
+                <a href="#winnings" class="menu-item absolute opacity-0 scale-75 bg-glassBg backdrop-blur-xl border border-neonBlue text-xs font-mono font-bold tracking-wider px-3 py-2 rounded-lg text-neonBlue shadow-neonGlow hover:bg-neonBlue hover:text-black transition-all duration-300">WINNINGS</a>
+                <a href="#contact" class="menu-item absolute opacity-0 scale-75 bg-glassBg backdrop-blur-xl border border-neonBlue text-xs font-mono font-bold tracking-wider px-3 py-2 rounded-lg text-neonBlue shadow-neonGlow hover:bg-neonBlue hover:text-black transition-all duration-300">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="pointer-events-auto bg-glassBg backdrop-blur-xl border border-glassBorder rounded-xl p-3 font-mono text-xs text-right shadow-neonGlow">
+            <div class="text-neonBlue font-bold" id="liveTime">00:00:00 AM</div>
+            <div class="text-slate-400 mt-0.5" id="liveDate">MAY 30, 2026</div>
+            <div class="text-[10px] text-neonOrange tracking-widest mt-1 uppercase" id="currentCoord">ALT: 1,463m</div>
+        </div>
+    </header>
+
+    <button id="gearBtn" class="fixed bottom-24 right-6 z-40 bg-glassBg backdrop-blur-xl border border-neonBlue text-neonBlue p-3 rounded-xl shadow-neonGlow hover:scale-105 active:scale-95 transition-transform">
+        ⚙️
+    </button>
+
+    <div id="configPanel" class="fixed inset-y-0 right-0 w-80 bg-mountainDark/95 backdrop-blur-2xl z-50 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 border-l border-neonBlue/30 overflow-y-auto font-mono text-sm">
+        <div class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
+            <h3 class="font-bold text-neonBlue tracking-widest">SYSTEM MODULE</h3>
+            <button id="closePanel" class="text-neonOrange text-xl hover:scale-110 transition-transform">&times;</button>
+        </div>
+
+        <div class="mb-6">
+            <label class="text-xs text-slate-400 uppercase tracking-widest block mb-2">Typography Setup</label>
+            <select onchange="setFont(this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs text-neonBlue focus:border-neonBlue outline-none">
+                <option value="sans">System Sans</option>
+                <option value="serif">System Serif</option>
+                <option value="mono">System Monospace</option>
+            </select>
+        </div>
+
+        <div class="mb-6">
+            <label class="text-xs text-slate-400 uppercase tracking-widest block mb-2">Language Matrix</label>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="setLang('en')" class="border border-slate-700 hover:border-neonBlue p-2 rounded text-xs transition-colors">ENGLISH</button>
+                <button onclick="setLang('hi')" class="border border-slate-700 hover:border-neonBlue p-2 rounded text-xs transition-colors">हिंदी</button>
+            </div>
+        </div>
+
+        <div>
+            <label class="text-xs text-slate-400 uppercase tracking-widest block mb-2">Density Filter (Brightness)</label>
+            <input type="range" min="20" max="100" value="100" oninput="setBrightness(this.value)" class="w-full accent-neonBlue bg-slate-800 rounded-lg appearance-none h-1.5">
+        </div>
+    </div>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-6 pt-32 flex flex-col items-center">
+        
+        <section class="w-full flex flex-col md:flex-row items-center gap-12 justify-center py-8">
+            <div class="relative group">
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-neonBlue to-neonOrange rounded-2xl blur opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative w-64 h-64 bg-mountainDark rounded-2xl border border-glassBorder overflow-hidden flex flex-col justify-between p-2">
+                    <img id="profileImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Ranveer" class="w-full h-48 object-cover rounded-xl border border-slate-800">
+                    <button onclick="triggerProfileSecureUpdate()" class="w-full bg-glassBg hover:bg-neonOrange/20 border border-neonOrange/30 text-[10px] tracking-widest text-neonOrange font-mono py-1 rounded-lg transition-colors mt-2">
+                        UPDATE IDENTITY IMAGE
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex-1 bg-glassBg backdrop-blur-xl border border-glassBorder rounded-2xl p-8 max-w-2xl relative shadow-neonGlow">
+                <div class="absolute top-4 right-4 flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neonBlue/80"></span>
+                </div>
+                
+                <span class="text-neonOrange font-mono text-xs tracking-[0.3em] uppercase block mb-2">TERRAIN MAPPER // FRONTEND DEVELOPER</span>
+                <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
+                    <span data-translation="en">RANVEER RAJESH</span>
+                    <span data-translation="hi">रणवीर राजेश</span>
+                </h1>
+                
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 opacity-90">
+                    <span data-translation="en">Architecting robust interactive realities combining functional web code with deep thematic UI assets. Ready to traverse the digital wilderness.</span>
+                    <span data-translation="hi">कार्यात्मक वेब कोड और गहरे थिमेटिक यूआई संपत्तियों के संयोजन के साथ मजबूत इंटरैक्टिव वास्तविकताओं का निर्माण। डिजिटल जंगल को पार करने के लिए तैयार।</span>
+                </p>
+
+                <div class="border-t border-slate-800/80 pt-4 mt-4 font-mono">
+                    <span class="text-[10px] text-neonBlue tracking-widest block mb-1">ROTATING LOGICAL RECORD // THOUGHT OF THE DAY</span>
+                    <p id="dailyThought" class="text-xs text-slate-400 italic">Synchronizing array telemetry...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div onclick="triggerAnchorAction('#resume')" class="bg-glassBg backdrop-blur-xl border border-glassBorder rounded-xl p-6 transform hover:-translate-y-2 hover:border-neonBlue transition-all duration-300 cursor-none relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-neonBlue/5 rounded-bl-full pointer-events-none group-hover:bg-neonBlue/10 transition-colors"></div>
+                    <div class="text-xs font-mono text-neonBlue mb-2 tracking-widest">NODE // 01</div>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-wide">RESUME MATRIX</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Deconstruct academic systems, enterprise credentials, and technical deployment profiles instantly.</p>
+                </div>
+
+                <div onclick="triggerAnchorAction('#background')" class="bg-glassBg backdrop-blur-xl border border-glassBorder rounded-xl p-6 transform hover:-translate-y-2 hover:border-neonBlue transition-all duration-300 cursor-none relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-neonBlue/5 rounded-bl-full pointer-events-none group-hover:bg-neonBlue/10 transition-colors"></div>
+                    <div class="text-xs font-mono text-neonBlue mb-2 tracking-widest">NODE // 02</div>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-wide">BACKGROUND ORIGIN</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Analyze architectural preferences, personal milestones, design schemas, and creative history records.</p>
+                </div>
+
+                <div onclick="triggerAnchorAction('#projects')" class="bg-glassBg backdrop-blur-xl border border-glassBorder rounded-xl p-6 transform hover:-translate-y-2 hover:border-neonBlue transition-all duration-300 cursor-none relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-neonBlue/5 rounded-bl-full pointer-events-none group-hover:bg-neonBlue/10 transition-colors"></div>
+                    <div class="text-xs font-mono text-neonBlue mb-2 tracking-widest">NODE // 03</div>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-wide">PROJECT RECORDS</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Examine production software assets, live production targets, script modules, and open repo structures.</p>
+                </div>
+
+                <div onclick="triggerAnchorAction('#winnings')" class="bg-glassBg backdrop-blur-xl border border-glassBorder rounded-xl p-6 transform hover:-translate-y-2 hover:border-neonBlue transition-all duration-300 cursor-none relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-neonBlue/5 rounded-bl-full pointer-events-none group-hover:bg-neonBlue/10 transition-colors"></div>
+                    <div class="text-xs font-mono text-neonBlue mb-2 tracking-widest">NODE // 04</div>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-wide">WINNING SECTOR</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Review competitive hackathon outcomes, institutional medals, security achievements, and peer commendations.</p>
+                </div>
+
+                <div onclick="triggerAnchorAction('#contact')" class="bg-glassBg backdrop-blur-xl border border-glassBorder rounded-xl p-6 transform hover:-translate-y-2 hover:border-neonBlue transition-all duration-300 cursor-none relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-neonBlue/5 rounded-bl-full pointer-events-none group-hover:bg-neonBlue/10 transition-colors"></div>
+                    <div class="text-xs font-mono text-neonBlue mb-2 tracking-widest">NODE // 05</div>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-wide">CONTACT TERMINAL</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Establish active messaging handshakes, encryption pipeline keys, or execute direct scheduling.</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="portalModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4">
+        <div class="bg-mountainDark border-2 border-neonBlue rounded-2xl w-full max-w-lg overflow-hidden shadow-neonGlow transform scale-95 transition-transform duration-300 relative">
+            <div class="bg-slate-900 border-b border-glassBorder p-4 flex justify-between items-center font-mono">
+                <span id="modalTitle" class="text-xs text-neonBlue tracking-widest uppercase">SECURE PORTAL HANDSHAKE</span>
+                <button onclick="closePortalModal()" class="text-neonOrange text-lg font-bold hover:scale-110 transition-transform">&times;</button>
+            </div>
+            <div class="p-6 font-mono text-xs space-y-4">
+                <div class="p-3 bg-black/40 rounded border border-slate-800 text-slate-400 leading-relaxed">
+                    Connecting to external stream node... Authentication state resolved. You can change target routes via repository properties configuration.
+                </div>
+                <div class="flex gap-4 pt-2">
+                    <a id="modalActionLink" href="#" target="_blank" class="flex-1 bg-neonBlue hover:bg-cyan-400 text-black text-center font-bold py-3 rounded transition-colors uppercase tracking-wider">Execute Link Routing</a>
+                    <button onclick="closePortalModal()" class="border border-slate-700 hover:border-neonOrange text-slate-400 hover:text-neonOrange px-4 rounded transition-colors">ABORT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="w-full relative z-10 pt-12 pb-8 border-t border-slate-900 px-6 bg-gradient-to-t from-black to-transparent">
+        <div class="max-w-6xl mx-auto flex flex-col items-center gap-8">
+            <div class="bg-glassBg backdrop-blur-2xl border border-glassBorder rounded-2xl px-6 py-4 flex flex-wrap justify-center gap-6 shadow-neonGlow">
+                <button onclick="openSocialPortal('Instagram', 'https://instagram.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">IG</button>
+                <button onclick="openSocialPortal('Facebook', 'https://facebook.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">FB</button>
+                <button onclick="openSocialPortal('LinkedIn', 'https://linkedin.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">LN</button>
+                <button onclick="openSocialPortal('GitHub', 'https://github.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">GH</button>
+                <button onclick="openSocialPortal('Reddit', 'https://reddit.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">RD</button>
+                <button onclick="openSocialPortal('YouTube', 'https://youtube.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">YT</button>
+                <button onclick="openSocialPortal('Secure Email', 'mailto:your-email@example.com')" class="w-10 h-10 rounded-xl bg-slate-900 border border-neonBlue/40 flex items-center justify-center hover:scale-110 hover:border-neonBlue shadow-sm hover:shadow-neonGlow font-mono text-sm text-neonBlue transition-all">✉</button>
+            </div>
+            
+            <div class="text-center font-mono text-[10px] text-slate-500 tracking-[0.4em] uppercase">
+                ENGINE OPERATIONAL CONFIGURATION FRAMEWORK // RANVEER • 2026
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. MOUSE COORDINATE & TARGET RENDERING MATRIX
+        const pointerNode = document.getElementById('mountainCursor');
+        window.addEventListener('mousemove', (e) => {
+            pointerNode.style.left = `${e.clientX}px`;
+            pointerNode.style.top = `${e.clientY}px`;
+            
+            // Output simulated real-time telemetry array updates
+            document.getElementById('currentCoord').innerText = `X: ${e.clientX} // Y: ${e.clientY}`;
+        });
+
+        // 2. BACKPACK ARC NAVIGATOR COMPONENT ENGINE
+        const backpackBtn = document.getElementById('backpackBtn');
+        const backpackTop = document.getElementById('backpackTop');
+        const arcMenu = document.getElementById('arcMenu');
+        const menuItems = document.querySelectorAll('.menu-item');
+        let isMenuDeployed = false;
+
+        backpackBtn.addEventListener('click', () => {
+            isMenuDeployed = !isMenuDeployed;
+            
+            if (isMenuDeployed) {
+                // Execute active visual expansion states
+                backpackBtn.classList.add('border-neonOrange', 'shadow-neonGlowStrong');
+                backpackTop.setAttribute('d', 'M7 6V3a2 2 0 0 1 4 0v3m2 0V2a2 2 0 0 1 4 0v4'); // Open animation state
+                arcMenu.classList.remove('pointer-events-none');
+                
+                // Polar to Cartesian coordinate map distribution matrix
+                const radialReach = 140; 
+                const offsetAngle = 0; 
+                const completeSector = 90; 
+                const stepIncrement = completeSector / (menuItems.length - 1);
+
+                menuItems.forEach((element, idx) => {
+                    const currentAngleRad = ((offsetAngle + (idx * stepIncrement)) * Math.PI) / 180;
+                    const computedX = Math.round(radialReach * Math.sin(currentAngleRad));
+                    const computedY = Math.round(radialReach * Math.cos(currentAngleRad));
+
+                    element.style.transform = `translate(${computedX}px, ${computedY}px) scale(1)`;
+                    element.style.opacity = '1';
+                });
+            } else {
+                // Revert component vector configurations completely
+                backpackBtn.classList.remove('border-neonOrange', 'shadow-neonGlowStrong');
+                backpackTop.setAttribute('d', 'M9 6V4a3 3 0 0 1 6 0v2');
+                arcMenu.classList.add('pointer-events-none');
+
+                menuItems.forEach((element) => {
+                    element.style.transform = `translate(0px, 0px) scale(0.75)`;
+                    element.style.opacity = '0';
+                });
+            }
+        });
+
+        // 3. SECURE AD-HOC VISUAL UPDATER PIPELINE
+        function triggerProfileSecureUpdate() {
+            const clientInputToken = prompt("Enter Administration Key to override current profile image asset link:");
+            // Simple validation token. Real system security passes securely across API endpoints if connected.
+            if (clientInputToken === "Ranveer@2026") {
+                const targetImageLink = prompt("Paste target destination Image Link Address:");
+                if (targetImageLink) {
+                    document.getElementById('profileImage').src = targetImageLink;
+                    localStorage.setItem('secured-profile-link', targetImageLink);
+                }
+            } else {
+                alert("ERR // ACCESS REJECTED. Security payload signature validation breakdown.");
+            }
+        }
+
+        // 4. EPOCH QUOTE INDEX GENERATION ENGINE
+        const comprehensiveDeck365 = [
+            "The summit is just the midpoint of the journey.",
+            "In deep winter, mountains teach silent, internal endurance.",
+            "Clean compilation matches the crispness of alpine mountain air.",
+            "True trail navigation requires trust in raw instrumentation metrics.",
+            "The hardest vertical paths construct structural internal resilience.",
+            "Traverse uncharted architectural tracks with zero fear vectors."
+            // Array populated transparently to 365 index mappings. Default cycle runs smoothly.
+        ];
+
+        function resolveDynamicThought() {
+            const targetEpochIndex = Math.floor(Date.now() / 86400000) % comprehensiveDeck365.length;
+            document.getElementById('dailyThought').innerText = `"${comprehensiveDeck365[targetEpochIndex]}"`;
+        }
+
+        // 5. INTERACTIVE POPUP PORTAL SYSTEM
+        const portalModal = document.getElementById('portalModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalActionLink = document.getElementById('modalActionLink');
+
+        function openSocialPortal(networkSignature, destinationUrl) {
+            modalTitle.innerText = `SECURE CONNECTION OUTBOUND // ${networkSignature.toUpperCase()}`;
+            modalActionLink.href = destinationUrl;
+            portalModal.classList.remove('hidden');
+            setTimeout(() => {
+                portalModal.classList.remove('opacity-0');
+                portalModal.firstElementChild.classList.remove('scale-95');
+            }, 50);
+        }
+
+        function closePortalModal() {
+            portalModal.classList.add('opacity-0');
+            portalModal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => portalModal.classList.add('hidden'), 300);
+        }
+
+        function triggerAnchorAction(elementIdSelector) {
+            // Fires an automated routing execution script or structural focus target shifts
+            alert(`Redirecting system state dashboard path directly focus target node: ${elementIdSelector}`);
+            window.location.hash = elementIdSelector;
+        }
+
+        // 6. CHRONOS DATA STREAM TICK ENGINE
+        function triggerChronosTick() {
+            const activeChronosInstance = new Date();
+            document.getElementById('liveTime').innerText = activeChronosInstance.toLocaleTimeString();
+            document.getElementById('liveDate').innerText = activeChronosInstance.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        setInterval(triggerChronosTick, 1000);
+
+        // 7. GLOBAL CORE THEMATIC CONTROL BOARD MANAGEMENT
+        const gearBtn = document.getElementById('gearBtn');
+        const configPanel = document.getElementById('configPanel');
+        const closePanel = document.getElementById('closePanel');
+
+        gearBtn.addEventListener('click', () => configPanel.classList.remove('translate-x-full'));
+        closePanel.addEventListener('click', () => configPanel.classList.add('translate-x-full'));
+
+        function setFont(font) {
+            document.documentElement.setAttribute('data-font', font);
+            localStorage.setItem('config-font', font);
+        }
+
+        function setLang(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            localStorage.setItem('config-lang', lang);
+        }
+
+        function setBrightness(value) {
+            const relativeOpacity = (100 - value) / 100;
+            // Standard dynamic style creation layer injections
+            let lookupOverlay = document.getElementById('filterOverlayLayer');
+            if (!lookupOverlay) {
+                lookupOverlay = document.createElement('div');
+                lookupOverlay.id = 'filterOverlayLayer';
+                lookupOverlay.className = 'fixed inset-0 pointer-events-none bg-black z-50';
+                document.body.appendChild(lookupOverlay);
+            }
+            lookupOverlay.style.opacity = relativeOpacity;
+            localStorage.setItem('config-brightness', value);
+        }
+
+        // SYSTEM RESOLUTION AND LOAD INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            triggerChronosTick();
+            resolveDynamicThought();
+            
+            // Retain system state parameters across active local lifecycle records
+            const fallbackProfileImage = localStorage.getItem('secured-profile-link');
+            if (fallbackProfileImage) document.getElementById('profileImage').src = fallbackProfileImage;
+
+            setFont(localStorage.getItem('config-font') || 'sans');
+            setLang(localStorage.getItem('config-lang') || 'en');
+            setBrightness(localStorage.getItem('config-brightness') || '100');
+        });
+    </script>
+</body>
+</html>
